@@ -1,0 +1,5 @@
+
+_squid:S3457;"AFormat specifiers should be used instead of string concatenation.(¦¶ µ8¹¬‚à™.
+Fsquid:S2885%"(Make "DATE_FORMAT" an instance variable.(“ÉÓ’8ç¨þß™.
+¤squid:S1186C"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÜÆÚÚýÿÿÿÿ8ùÆ…à™.
+_squid:S3457<"AFormat specifiers should be used instead of string concatenation.(º«òˆ8¹¬‚à™.
