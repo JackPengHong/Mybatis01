@@ -9,6 +9,7 @@
     <typeAliases>
         <typeAlias type="com.entity.Student" alias="student"></typeAlias>
     </typeAliases>
+
     <plugins>
         <!--监控 sql 埋点 分页-->
         <plugin interceptor="com.utils.SqlPrintInterceptor"></plugin>
@@ -27,6 +28,8 @@
 
     <mappers>
         <mapper resource="studentMapper.xml"/>
+        <mapper class="com.mapper.StudentMapper"/>
+        <!--<package name="com.mapper"/>-->
     </mappers>
 
 

@@ -1,6 +1,4 @@
-package com.utils;/**
- * Created by PengHong on  2020/4/21 17:02.
- */
+package com.utils;
 
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.*;
@@ -42,9 +40,7 @@ public class SqlPrintInterceptor implements Interceptor{
             parameterObject = invocation.getArgs()[1];
         }
         long start = System.currentTimeMillis();
-
         Object result = invocation.proceed();
-
         String statementId = mappedStatement.getId();
         BoundSql boundSql = mappedStatement.getBoundSql(parameterObject);
         Configuration configuration = mappedStatement.getConfiguration();
@@ -56,13 +52,13 @@ public class SqlPrintInterceptor implements Interceptor{
             log.info("执行sql耗时:" + timing + " ms" + " - id:" + statementId + " - Sql:" );
             log.info("   "+sql);
         }
-
         return result;
 
     }
 
     @Override
     public void setProperties(Properties properties) {
+
     }
 
 
