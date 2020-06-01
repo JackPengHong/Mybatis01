@@ -1,6 +1,5 @@
-package test;/**
- * Created by PengHong on  2020/4/21 15:12.
- */
+package test;
+
 
 import com.entity.Student;
 import com.mapper.StudentMapper;
@@ -11,7 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import java.io.InputStream;
-
+import java.util.List;
 
 /**
  * @author
@@ -23,6 +22,7 @@ public class StudentTest {
     public  void test() {
         String resource="mybatis-config.xml";
         InputStream inputStream=null;
+
         SqlSessionFactory sqlSessionFactory=null;
         SqlSession session=null;
         Student student=new Student();
@@ -35,7 +35,7 @@ public class StudentTest {
 
             System.out.println("编号:"+student.getId());
             System.out.println("姓名:"+student.getStuname());
-            System.out.println("年龄:"+student.getAge());
+//            System.out.println("年龄:"+student.getAge());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -67,7 +67,7 @@ public class StudentTest {
 
             System.out.println("编号:"+student.getId());
             System.out.println("姓名:"+student.getStuname());
-            System.out.println("年龄:"+student.getAge());
+            System.out.println("年龄:"+student.getNl());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -78,5 +78,36 @@ public class StudentTest {
         }
     }
 
+    @Test
+    public  void test03() {
+        String resource="mybatis-config.xml";
+        InputStream inputStream=null;
+        SqlSessionFactory sqlSessionFactory=null;
+        SqlSession session=null;
+
+        try{
+            inputStream= Resources.getResourceAsStream(resource);
+            sqlSessionFactory=new SqlSessionFactoryBuilder().build(inputStream);
+            session=sqlSessionFactory.openSession();
+            //
+
+            TeacherMapper teacherMapper=session.getMapper(TeacherMapper.class);
+            List<Teacher> teacherLists=teacherMapper.selectByExample(new TeacherExample());
+            for (Teacher teacher:teacherLists) {
+                System.out.println("编号:"+teacher.getId());
+                System.out.println("姓名:"+teacher.gettName());
+                System.out.println("年龄:"+teacher.getAge());
+                System.out.println("备注:"+teacher.getpMark());
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(session !=null){
+                session.close();
+            }
+        }
+    }
 
 }

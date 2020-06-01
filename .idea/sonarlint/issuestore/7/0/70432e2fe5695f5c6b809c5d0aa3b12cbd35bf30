@@ -1,0 +1,4 @@
+
+Ssquid:UselessImportCheck"*Remove this unused import 'lombok.Setter'.(ó¸çµ8²Òð°£.
+lsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(²áÓÆüÿÿÿÿ8Çùð°£.
+Ssquid:UselessImportCheck"*Remove this unused import 'lombok.Getter'.(ùÒµÙ8²Òð°£.

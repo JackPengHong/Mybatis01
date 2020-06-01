@@ -4,7 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-    <properties resource="properties-config.properties"></properties>
+    <properties resource="properties-config.properties">
+        <!-- 启用默认值特性 -->
+        <property name="org.apache.ibatis.parsing.PropertyParser.enable-default-value" value="true"/>
+        <!-- 修改默认值的分隔符 -->
+        <!--<property name="org.apache.ibatis.parsing.PropertyParser.default-value-separator" value="?:"/> -->
+    </properties>
 
     <typeAliases>
         <typeAlias type="com.entity.Student" alias="student"></typeAlias>
@@ -20,8 +25,9 @@
             <dataSource type="POOLED">
                 <property name="driver" value="${driver}"/>
                 <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <!-- 如果属性 'username' 没有被配置，'username' 属性的值将为 'abs' -->
+                <property name="username" value="${username:abs}"/>
+                <property name="password" value="${password:abs}"/>
             </dataSource>
         </environment>
     </environments>
@@ -29,6 +35,7 @@
     <mappers>
         <mapper resource="studentMapper.xml"/>
         <mapper class="com.mapper.StudentMapper"/>
+        <mapper resource="mapper/TeacherMapper.xml"/>
         <!--<package name="com.mapper"/>-->
     </mappers>
 
